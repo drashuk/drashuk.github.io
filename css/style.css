@@ -1,6 +1,6 @@
 .responsive-map-container {
   position: initial;
-  padding-bottom: 100%;
+  padding-bottom: 99.9%;
   height: 0;
   overflow: hidden;
 }
