@@ -1,12 +1,34 @@
-.carousel-item {
+.responsive-map-container {
+  position: initial;
+  padding-bottom: 100%;
+  height: 0;
+  overflow: hidden;
+}
+
+.carousel-item .img-responsive {
   width: 100%;
-  height: 90vh;
-  min-height: 300px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  height: 100%;
+  
+}
+.carousel-item .img-fluid {
+  width: 100%;
+  height: 80vh;
+  margin-bottom: 20px;
+}
+.carousel-caption {
+  position:initial;
+}
+
+
+.carousel-caption h3 {
+  font-size: 34px;
+  font-weight: bold;
+  color:rgba(177, 6, 6, 0.555)
+}
+
+.carousel-caption p {
+  font-size: 24px;
+  color: #fb2121;
 }
 
 .brand {
