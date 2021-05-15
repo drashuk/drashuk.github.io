@@ -14,6 +14,78 @@
       <script src='https://www.google.com/recaptcha/api.js?=es' async defer></script>
       <!--FontAwesome-->
       <script src="https://kit.fontawesome.com/6bb326207b.js" crossorigin="anonymous"></script>
+      <script>$(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })</script>
+      <script>
+        $(function()
+        {
+          $('.btnEnviar').click(function() // Evento Boton
+			    {
+            let nombre	= $('.txtNombre').val(); 
+            let email= $('.txtEmail').val(); 
+            let mensaje= $('txtMsj').val(); 
+          
+            if(nombre == "")
+            {
+              alert("Debe especificar el nombre");
+              $('.txtNombre').focus();
+              return false;
+            }
+            if($('.txtEmail').val() == "")
+            {
+              alert("Debe especificar el correo");
+              $('.txtEmail').focus();
+              return false;
+            }
+            if($('.txtMsj').val() == "")
+            {
+              alert("Debe especificar el mensaje");
+              $('.txtMsj').focus();
+              return false;
+            }		
+            				
+            // Validar Formato
+            let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/
+            
+            if(!emailRegex.test($('.txtEmail').val()))
+            {
+              alert("Debe ingresar su correo correctamente.");
+              $('.txtEmail').focus();
+              return false;
+            }				
+            
+            alert("Se envió lo siguiente:" + 
+                "\nNombre: " + $('.txtNombre').val()  + 
+                "\nEmail: " + $('.txtEmail').val() +
+                "\nMensaje : " + $('.txtMsj').val()
+            );
+            
+            return false; // No peticion.
+          }); // Fin de BtnEnviar.
+      
+          // No permite ingresar numeros en nombre, apellido.
+          // No permite ingresar letras en el telefono.
+          // Verificacion de email.
+
+          var letras = 'qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMÁÉÍóÚáéíóú ';
+          var email  = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM_.@1234567890 ';
+          var numeros= '1234567890';
+          
+          $('.txtNombre, .txtApellido').keypress(function(e)
+          {			
+            let caracter = String.fromCharCode(e.which);				
+            if(letras.indexOf(caracter) < 0)
+              return false;				
+          })			
+          $('.txtEmail').keypress(function(e)
+                {
+                    let caracter = String.fromCharCode(e.which); 
+                    if(email.indexOf(caracter) <0)
+                        return false;		
+              });
+        })
+      </script>
         <title>Contacto - eCommerce</title>
     </head>
     <body>
@@ -63,7 +135,7 @@
             </ul>
             <ul class="navbar-nav">
               <li class="nav-item">
-                  <a class="nav-link" href="registro_productos.html">
+                  <a class="nav-link" href="registro_productos.html" data-toggle="tooltip" data-placement="bottom" title="Agregar Productos" >
                     <i class="fas fa-plus-square"></i>
                   </a>
               </li>
@@ -85,20 +157,20 @@
                   <label for="name">
                     Nombre y Apellido
                   </label>
-                  <input type="text" aria-required="true" class="form-control" id="name" placeholder="Ej. Juan Perez" />
+                  <input type="text" aria-required="true" class="txtNombre form-control" name="txtNombre" placeholder="Ej. Juan Perez" />
                 </div>
                 <div class="form-group">
                   <label for="emailinput">
                     Correo Electronico
                   </label>
-                  <input type="email" aria-required="true" class="form-control" id="emailinput" placeholder="ejemplo@gmail.com"/>
+                  <input type="email" aria-required="true" class="txtEmail form-control" name="txtEmail" placeholder="ejemplo@gmail.com"/>
                 </div>
                 <div class="form-group">
                    
                   <label for="mensaje">
                     Escriba su mensaje aquí
                   </label>
-                  <textarea aria-required="true" rows="6" cols="45" name="message" id="message" class="form-control" placeholder="¿Qué necesito?"></textarea>
+                  <textarea aria-required="true" rows="6" cols="45" name="txtMsj" id="message" class="txtMsj form-control" placeholder="¿Qué necesito?"></textarea>
                   <br><br>
                   <div class="g-recaptcha" data-sitekey="6LcCqawaAAAAAEoCLDfh6RH8mZS27bDHN5xiL5pX"></div>
                 </div>
@@ -106,8 +178,8 @@
                   <label>
                   </label>
                 </div> 
-                <button type="submit" class="btn btn-primary">
-                  <i class="fas fa-paper-plane"></i>Enviar Mensaje
+                <button type="submit" class="btnEnviar btn btn-primary" name="btnEnviar">
+                  <i class="fas fa-paper-plane"></i> Enviar Mensaje
                 </button>
               </form>
             </div>

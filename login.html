@@ -14,6 +14,43 @@
       <script src='https://www.google.com/recaptcha/api.js?=es' async defer></script>
       <!--FontAwesome-->
       <script src="https://kit.fontawesome.com/6bb326207b.js" crossorigin="anonymous"></script>
+      <script>$(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })</script>
+      <script>
+        $(function()
+        {
+          $('.btnEnviar').click(function() // Evento Boton
+			    {
+            let rut	= $('.txtRut').val(); 
+            let pass= $('.txtPass').val(); 
+
+          
+            if(rut == "")
+            {
+              alert("Debe especificar el rut");
+              $('.txtRut').focus();
+              return false;
+            }
+            if($('.txtPass').val() == "")
+            {
+              alert("Debe especificar el password");
+              $('.txtPass').focus();
+              return false;
+            }				
+            return false; // No peticion.
+          }); // Fin de BtnEnviar.
+
+          var numeros= '1234567890';
+          
+          $('.txtRut').keypress(function(e)
+          {			
+            let caracter = String.fromCharCode(e.which);				
+            if(numeros.indexOf(caracter) < 0)
+              return false;				
+          })			
+        })
+      </script>
         <title>Inicio de Sesion - eCommerce</title>
     </head>
     <body>
@@ -63,7 +100,7 @@
             </ul>
             <ul class="navbar-nav">
               <li class="nav-item">
-                  <a class="nav-link" href="registro_productos.html">
+                  <a class="nav-link" href="registro_productos.html" data-toggle="tooltip" data-placement="bottom" title="Agregar Productos">
                     <i class="fas fa-plus-square"></i>
                   </a>
               </li>
@@ -85,19 +122,19 @@
                   <label for="rut">
                     Ingrese RUT
                   </label>
-                  <input type="number" aria-required="true" class="form-control" id="rut" placeholder="Ej. 26042747-3" />
+                  <input type="text" aria-required="true" class="txtRut form-control" name="txtRut" placeholder="Ej. 260427473" />
                 </div>
                 <div class="form-group">
                   <label for="passwordinput">
                     Ingrese Clave Generada
                   </label>
-                  <input type="password" aria-required="true" class="form-control" id="passwordinput" placeholder="Ej. jKSJ@ksj"/>
+                  <input type="password" aria-required="true" class="txtPass form-control" name="txtPass" placeholder="Ej. jKSJ@ksj"/>
                 </div>
                 <div class="button">
                   <label>
                   </label>
                 </div> 
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" name="btnEnviar" class="btnEnviar btn btn-primary">
                   <i class="fas fa-key"></i> Iniciar Sesion
                 </button>
               </form>

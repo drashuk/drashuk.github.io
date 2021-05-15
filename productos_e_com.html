@@ -15,6 +15,9 @@
       <script src="https://kit.fontawesome.com/6bb326207b.js" crossorigin="anonymous"></script>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script>$(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })</script>
     <script>
       $(function()
       {
@@ -32,6 +35,13 @@
           let total = valorPesoCasa / Dolar;
           $('.txtTotalPesos').val(total.toFixed(2));
           return false;				
+        })
+        var numeros= '1234567890';
+        $('.txtValorPesoCasa').keypress(function(e)
+        {
+          let caracter = String.fromCharCode(e.which); 
+          if(numeros.indexOf(caracter) <0)
+            return false;
         })
       })
     </script>
@@ -84,7 +94,7 @@
               </ul>
               <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="registro_productos.html">
+                    <a class="nav-link" href="registro_productos.html" data-toggle="tooltip" data-placement="bottom" title="Agregar Productos">
                       <i class="fas fa-plus-square"></i>
                     </a>
                 </li>
@@ -95,7 +105,7 @@
     <br><br><br>
     <center><h1>Catálogo de Productos</h1></center>
     <br>
-    <div class="col-12 col-md-4 dropdown offset-md-3" style="justify-content: center;">
+    <div class="col-12 col-md-4 dropdown offset-md-3">
       <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Convertidor a Dolar
       </button>
@@ -106,7 +116,7 @@
           </div>
         <div class="col-12">
           <p>Ingrese Pesos</p>
-          <input type="text" name="txtValorPesoCasa" class="dropdown-item txtValorPesoCasa form-control" placeholder="Monto sin Puntos" >
+          <input type="text" name="txtValorPesoCasa" maxlength="10" class="dropdown-item txtValorPesoCasa form-control" placeholder="Monto" >
         </div>
         <div class="col-12">
           <p>Total en Dolares</p>
