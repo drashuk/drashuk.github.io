@@ -36,13 +36,14 @@
               alert("Debe especificar el apellido");
               $('.txtApellido').focus();
               return false;
-            }
-            if($('.txtTelefono').val() == "")
+            } 
+             if($('.txtRut').val() == "")
             {
-              alert("Debe especificar el telefono");
-              $('.txtTelefono').focus();
+              alert("Debe especificar su RUT");
+              $('.txtRut').focus();
               return false;
             }
+
             if($('.txtEmail').val() == "")
             {
               alert("Debe especificar el correo");
@@ -55,16 +56,22 @@
               $('.txtNac').focus();
               return false;
             }	
-            if($('.txtRut').val() == "")
+            if($('.txtTelefono').val() == "")
             {
-              alert("Debe especificar su RUT");
-              $('.txtRut').focus();
+              alert("Debe especificar el telefono");
+              $('.txtTelefono').focus();
               return false;
             }
             if($('.txtRegion').val() == "Seleccionar...")
             {
-              alert("Debe especificar su región");
+              alert("Debe especificar su Pais");
               $('.txtRegion').focus();
+              return false;
+            }
+            if($('.txtEduc').val() == "Seleccionar...")
+            {
+              alert("Debe especificar su nivel educacional");
+              $('.txtEduc').focus();
               return false;
             }
             				
@@ -467,7 +474,7 @@
           </div>
       <div class="form-group col-md-6">
         <label for="inputNiveduc">Nivel Educacional</label>
-        <select id="inputNiveduc" class="form-control">
+        <select id="inputNiveduc" name="txtEduc" class="txtEduc form-control">
           <option selected>Seleccionar...</option>
           <option>Doctorado</option>
           <option>Magister</option>
